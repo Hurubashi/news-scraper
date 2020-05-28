@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-	const News = sequelize.define(
-		'News',
+	const news = sequelize.define(
+		'news',
 		{
 			title: {
 				type: DataTypes.STRING,
@@ -19,11 +19,11 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	)
 
-	News.associate = (models) => {
-		News.hasMany(models.NewsImage, {
+	news.associate = (models) => {
+		news.hasMany(models.news_image, {
 			onDelete: 'cascade',
 		})
 	}
 
-	return News
+	return news
 }
