@@ -1,0 +1,28 @@
+{
+	"name": "news-scraper",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Hurubashi/news-scraper.git"
+	},
+	"author": "mrybak",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Hurubashi/news-scraper/issues"
+	},
+	"homepage": "https://github.com/Hurubashi/news-scraper#readme",
+	"dependencies": {
+		"axios": "^0.19.2",
+		"cheerio": "^1.0.0-rc.3",
+		"express": "^4.17.1",
+		"pg": "^8.2.1",
+		"pg-hstore": "^2.3.3",
+		"sequelize": "^5.21.11",
+		"sequelize-cli": "^5.5.1"
+	}
+}
