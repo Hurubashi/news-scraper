@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-	const news_image = sequelize.define(
-		'news_image',
+	const NewsImage = sequelize.define(
+		'NewsImage',
 		{
 			href: {
 				type: DataTypes.STRING,
@@ -9,16 +9,17 @@ module.exports = (sequelize, DataTypes) => {
 		{
 			schema: 'crawler',
 			timestamps: false,
+			underscored: true,
 		},
 	)
 
-	news_image.associate = (models) => {
-		news_image.belongsTo(models.news, {
+	NewsImage.associate = (models) => {
+		NewsImage.belongsTo(models.News, {
 			foreignKey: {
 				allowNull: false,
 			},
 		})
 	}
 
-	return news_image
+	return NewsImage
 }
