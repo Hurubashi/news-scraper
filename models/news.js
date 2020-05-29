@@ -2,6 +2,10 @@ module.exports = (sequelize, DataTypes) => {
 	const News = sequelize.define(
 		'News',
 		{
+			url: {
+				type: DataTypes.STRING(2048),
+				allowNull: false,
+			},
 			title: {
 				type: DataTypes.STRING,
 				allowNull: false,
@@ -9,14 +13,21 @@ module.exports = (sequelize, DataTypes) => {
 			author: {
 				type: DataTypes.STRING,
 			},
-			date: {
-				type: DataTypes.DATE,
+			text: {
+				type: DataTypes.TEXT,
+				allowNull: false,
 			},
 		},
 		{
 			schema: 'crawler',
 			timestamps: false,
 			underscored: true,
+			indexes: [
+				{
+					unique: true,
+					fields: ['url'],
+				},
+			],
 		},
 	)
 
