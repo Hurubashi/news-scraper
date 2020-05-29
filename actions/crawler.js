@@ -3,6 +3,7 @@ const axios = require('axios')
 const db = require('../models')
 
 class CrawlerActions {
+	static ainLastNewsListURL = 'https://ain.ua/post-list/'
 	static newsToLoad = 5
 	/**
 	 * @returns {Array<CrawlerNews>}
@@ -14,7 +15,7 @@ class CrawlerActions {
 			const h = await getAinNewsByUrl(urls[i])
 			res.push(h)
 		}
-		return res
+		return res.reverse()
 	}
 
 	/**
@@ -62,7 +63,7 @@ class CrawlerActions {
  */
 async function getAinNewsUrls() {
 	let urls = []
-	const response = await axios.get('https://ain.ua/post-list/')
+	const response = await axios.get(CrawlerActions.ainLastNewsListURL)
 	if (response.data) {
 		const $ = cheerio.load(response.data)
 
@@ -113,4 +114,7 @@ async function getAinNewsByUrl(url) {
  */
 var CrawlerNews
 
-module.exports = CrawlerActions
+module.exports = {
+	CrawlerActions,
+	getAinNewsUrls,
+}

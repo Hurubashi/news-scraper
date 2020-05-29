@@ -1,4 +1,4 @@
-const CrawlerActions = require('../actions/crawler')
+const { CrawlerActions } = require('../actions/crawler')
 const db = require('../models')
 
 // @desc      Get news from ain.ua
@@ -16,6 +16,7 @@ exports.getAinNews = async (req, res, next) => {
 		const lastNews = await db.News.findAll({
 			limit: CrawlerActions.newsToLoad,
 			include: [db.NewsImage],
+			order: [['id', 'DESC']],
 		})
 		return res.status(200).json(lastNews)
 	} catch (e) {
