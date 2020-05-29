@@ -2,8 +2,8 @@ module.exports = (sequelize, DataTypes) => {
 	const NewsImage = sequelize.define(
 		'NewsImage',
 		{
-			src: {
-				type: DataTypes.STRING,
+			url: {
+				type: DataTypes.STRING(2048),
 			},
 		},
 		{

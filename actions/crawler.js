@@ -1,12 +1,9 @@
-'use strict'
 const cheerio = require('cheerio')
 const axios = require('axios')
+const db = require('../models')
 
-const newsToLoad = 3
-
-module.exports = class CrawlerActions {
-	static async
-
+class CrawlerActions {
+	static newsToLoad = 5
 	/**
 	 * @returns {Array<CrawlerNews>}
 	 */
@@ -24,7 +21,38 @@ module.exports = class CrawlerActions {
 	 * @param {Array<CrawlerNews>} news
 	 * @returns {Array<CrawlerNews>}
 	 */
-	static async getNewsMissingInDb(news) {}
+	static async getNewsMissingInDb(news) {
+		let res = []
+		for (let i = 0; i < news.length; i++) {
+			const newsElem = await db.News.findOne({
+				where: {
+					url: news[i].url,
+				},
+			})
+			if (newsElem == null) {
+				res.push(news[i])
+			}
+		}
+		return res
+	}
+
+	/**
+	 * @description Return NewsImages ready to insertion
+	 * @param {Array<CrawlerNews>} missingNews
+	 * @returns {Array<{news_id: number, url: string}>}
+	 */
+	static getNewsImagesData(createdNews, missingNews) {
+		let imgsInfo = []
+		for (let i = 0; i < createdNews.length; i++) {
+			missingNews[i].images.forEach((url) => {
+				imgsInfo.push({
+					NewsId: createdNews[i].id,
+					url: url,
+				})
+			})
+		}
+		return imgsInfo
+	}
 }
 
 /**
@@ -39,7 +67,7 @@ async function getAinNewsUrls() {
 		const $ = cheerio.load(response.data)
 
 		$('.post-link').each((i, item) => {
-			if (i < newsToLoad) urls.push(item.attribs['href'])
+			if (i < CrawlerActions.newsToLoad) urls.push(item.attribs['href'])
 		})
 	}
 	return urls
@@ -84,3 +112,5 @@ async function getAinNewsByUrl(url) {
  * }}
  */
 var CrawlerNews
+
+module.exports = CrawlerActions
