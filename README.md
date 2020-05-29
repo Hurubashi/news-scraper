@@ -1,4 +1,4 @@
-# Web crowler
+# Web crawler
 > Simple web-crawler
 
 # Installation
