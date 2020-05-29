@@ -9,14 +9,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Hurubashi/news-scraper.git"
+		"url": "git+https://github.com/Hurubashi/web-crawler.git"
 	},
 	"author": "mrybak",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/Hurubashi/news-scraper/issues"
+		"url": "https://github.com/Hurubashi/web-crawler/issues"
 	},
-	"homepage": "https://github.com/Hurubashi/news-scraper#readme",
+	"homepage": "https://github.com/Hurubashi/web-crawler#readme",
 	"dependencies": {
 		"axios": "^0.19.2",
 		"cheerio": "^1.0.0-rc.3",
