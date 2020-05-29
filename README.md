@@ -11,7 +11,12 @@
 ```shell
 npm start
 ```
+# Test
 
-**Routes**
+```shell
+npm test
+```
+
+# Routes
 
 - /crawler/ain - saving to db and return last 5 news from ain.ua
