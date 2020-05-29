@@ -1,10 +1,11 @@
 const db = require('../models')
 
+const schema = 'crawler'
 async function initSchema() {
 	try {
-		await db.sequelize.createSchema('crawler', { ifNotExists: true })
+		await db.sequelize.createSchema(schema, { ifNotExists: true })
 	} catch {
-		console.log('schema already axists')
+		console.log(`schema ${schema} already exists`)
 	}
 }
 
