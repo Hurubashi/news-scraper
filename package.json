@@ -4,11 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "jest --env=node",
+		"test": "jest",
 		"start": "node index.js"
-	},
-	"jest": {
-		"testTimeout": 15000
 	},
 	"repository": {
 		"type": "git",
