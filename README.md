@@ -1,5 +1,3 @@
-# Web crawler
-> Simple web-crawler
 
 # Installation
 
