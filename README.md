@@ -1,5 +1,5 @@
 
-# Installation
+# Config
 
 - Database options - config/config.json
 - Enviroment options - config/.env
